@@ -16,6 +16,9 @@ WORKDIR /data
 RUN curl -L "$BOT_BINARY_URL" -o /tmp/git-watcher-bot.zip && \
     unzip /tmp/git-watcher-bot.zip -d /usr/local/bin && \
     rm /tmp/git-watcher-bot.zip && \
+    if [ -f /usr/local/bin/git-watcher-bot-linux-amd64 ] && [ ! -f /usr/local/bin/git-watcher-bot ]; then \
+      mv /usr/local/bin/git-watcher-bot-linux-amd64 /usr/local/bin/git-watcher-bot; \
+    fi && \
     chmod +x /usr/local/bin/git-watcher-bot*
 
 COPY .env.sample /data/.env.sample

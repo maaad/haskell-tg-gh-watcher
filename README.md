@@ -1,4 +1,4 @@
-## haskell-tg-gh-watcher
+## git-watcher-bot
 
 Yet another telegram bot written in Haskell that watches GitHub repositories (stars, watchers, open issues, pull requests, forks) and sends concise, aggregated notifications with exact deltas for each changed metric.
 

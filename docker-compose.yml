@@ -1,14 +1,15 @@
-version: "3.9"
-
 services:
   git-watcher-bot:
+    image: ghcr.io/maaad/git-watcher-bot:latest
     build: .
-    image: git-watcher-bot:latest
     restart: unless-stopped
     env_file:
       - .env
     working_dir: /data
     volumes:
-      - ./:/data
+      - git-watcher-data:/data
     command: ["git-watcher-bot"]
+
+volumes:
+  git-watcher-data:
 
