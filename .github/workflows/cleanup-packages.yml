@@ -1,0 +1,26 @@
+name: Cleanup Old Package Versions
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    name: Cleanup Package Versions
+    runs-on: self-hosted
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Delete old container package versions
+        uses: actions/delete-package-versions@v5
+        continue-on-error: true
+        with:
+          package-name: ${{ github.repository }}
+          package-type: container
+          min-versions-to-keep: 10
+          ignore-versions: "^latest$"
+          delete-only-untagged-versions: true
+
