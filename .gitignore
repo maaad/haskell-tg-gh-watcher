@@ -1,0 +1,39 @@
+### Haskell build artifacts
+dist/
+dist-*/
+dist-newstyle/
+
+### Stack
+.stack-work/
+stack.sqlite3
+stack.sqlite3.pantry-write-lock
+
+### Cabal / GHC
+*.hi
+*.o
+*.dyn_o
+*.dyn_hi
+*.prof
+*.aux
+*.hp
+*.eventlog
+.ghc.environment.*
+
+### IDE / OS files
+.vscode/
+.cursor/
+.DS_Store
+*.swp
+*.swo
+*.tmp
+*~
+
+### Local configuration / secrets
+.env
+
+### Local databases / backups
+*.db
+*.db.bak
+
+### Internal Documentation
+docs/

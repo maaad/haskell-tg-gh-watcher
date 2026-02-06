@@ -1,0 +1,101 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.38.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           git-watcher-bot
+version:        0.1.0.0
+description:    Telegram bot in Haskell that watches GitHub repositories and notifies users about changes.
+category:       Bot
+homepage:       https://github.com/example/git-watcher-bot#readme
+bug-reports:    https://github.com/example/git-watcher-bot/issues
+author:         Your Name
+maintainer:     you@example.com
+license:        MIT
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/example/git-watcher-bot
+
+library
+  exposed-modules:
+      API.GitHub
+      App.Env
+      Bot.Telegram
+      Bot.Telegram.Commands
+      Bot.Telegram.Core
+      Bot.Telegram.Messages
+      Bot.Telegram.Types
+      Bot.Telegram.Watchdog
+      Config.AppM
+      Config.Watch
+      Control.Error
+      Data.NonEmptyText
+      DB.Database
+      DB.Types
+      Domain.RepositoryCheck
+      Domain.RepositoryName
+      Domain.Types
+      Logging
+  other-modules:
+      Paths_git_watcher_bot
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , async
+    , base >=4.14 && <5
+    , bytestring
+    , containers
+    , directory
+    , fast-logger
+    , filepath
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , sqlite-simple
+    , stm
+    , telegram-bot-api
+    , text
+    , time
+    , transformers
+    , unix
+  default-language: Haskell2010
+
+executable git-watcher-bot-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_git_watcher_bot
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N -O2 -split-sections
+  if os(linux)
+    ghc-options: -optl-Wl,--gc-sections
+  build-depends:
+      aeson
+    , async
+    , base >=4.14 && <5
+    , bytestring
+    , containers
+    , directory
+    , fast-logger
+    , filepath
+    , git-watcher-bot
+    , http-client
+    , http-client-tls
+    , http-types
+    , mtl
+    , sqlite-simple
+    , stm
+    , telegram-bot-api
+    , text
+    , time
+    , transformers
+    , unix
+  default-language: Haskell2010

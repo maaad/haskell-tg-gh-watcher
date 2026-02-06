@@ -1,0 +1,75 @@
+name:                git-watcher-bot
+version:             0.1.0.0
+github:              "example/git-watcher-bot"
+license:             MIT
+author:              "Your Name"
+maintainer:          "you@example.com"
+category:            Bot
+extra-source-files:
+  - README.md
+
+description:         Telegram bot in Haskell that watches GitHub repositories and notifies users about changes.
+
+library:
+  source-dirs: src
+  ghc-options:
+    - -Wall
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+  dependencies:
+    - aeson
+    - async
+    - base >= 4.14 && < 5
+    - bytestring
+    - containers
+    - directory
+    - fast-logger
+    - filepath
+    - http-client
+    - http-client-tls
+    - http-types
+    - mtl
+    - sqlite-simple
+    - stm
+    - telegram-bot-api
+    - text
+    - time
+    - transformers
+    - unix
+
+executables:
+  git-watcher-bot-exe:
+    main:                Main.hs
+    source-dirs:         app
+    # Linux-only: -optl-Wl,--gc-sections is in git-watcher-bot.cabal (if os(linux));
+    # keep that block when regenerating .cabal with hpack.
+    ghc-options:
+      - -Wall
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -O2
+      - -split-sections
+    dependencies:
+      - aeson
+      - async
+      - base >= 4.14 && < 5
+      - bytestring
+      - containers
+      - directory
+      - fast-logger
+      - filepath
+      - git-watcher-bot
+      - http-client
+      - http-client-tls
+      - http-types
+      - mtl
+      - sqlite-simple
+      - stm
+      - telegram-bot-api
+      - text
+      - time
+      - transformers
+      - unix
+

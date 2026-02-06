@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  git-watcher-bot:
+    build: .
+    image: git-watcher-bot:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    working_dir: /data
+    volumes:
+      - ./:/data
+    command: ["git-watcher-bot"]
+
